@@ -26,7 +26,7 @@ def load_data(database_filepath):
     Output: X, Y, category_names
     """
     engine = create_engine('sqlite:///' + database_filepath)
-    df = pd.read_sql_table(database_filepath, con=engine)
+    df = pd.read_sql_table('DisasterResponse', con=engine)
     X = df['message']
     Y = df.drop(['message', 'original', 'genre', 'id'], axis=1)
     category_names = Y.columns
